@@ -1,26 +1,27 @@
 hook.Add("PostGamemodeLoaded", "DumpGlobals", function()
-	print("hello")
-
 	local hand = file.Open("globals-dump.txt", "w", "DATA")
 
 	local manual = {
 		TOOL = {true, true} -- CL, SV
 	}
 
+	print("START GLOBALS BLOCK")
 	for k, v in pairs(_G) do
 		if not isstring(k) then continue end
 
-		hand:Write(k)
-		hand:Write("\n")
-		hand:Flush()
+		--hand:Write(k)
+		--hand:Write("\n")
+		--hand:Flush()
+		print(k)
 	end
-	for k, v in pairs(manual) do
-		if (CLIENT and v[1]) or (SERVER and v[2]) then
-			hand:Write(k)
-			hand:Write("\n")
-			hand:Flush()
-		end
-	end
+	print("END GLOBALS BLOCK")
+	--for k, v in pairs(manual) do
+	--	if (CLIENT and v[1]) or (SERVER and v[2]) then
+	--		hand:Write(k)
+	--		hand:Write("\n")
+	--		hand:Flush()
+	--	end
+	--end
 
 	hand:Close()
 
