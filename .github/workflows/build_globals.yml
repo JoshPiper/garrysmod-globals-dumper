@@ -11,9 +11,11 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v3
-      - name: Build Globals File
-        run: |
-          docker build -t globals-server -f docker/server/Dockerfile .
-          docker run --name=globals-server-test --mount type=bind,source=./data,target=/home/steam/garrysmod/garrysmod/data globals-server
+      - name: Build Server Image
+        run: docker build -t globals-server -f docker/server/Dockerfile .
+      - name: Prepare Environment
+        run: mkdir ./data
+      - name: Build Dump File
+        run: docker run --name=globals-server-test --mount type=bind,source=./data,target=/home/steam/garrysmod/garrysmod/data globals-server
       - name: Cat File
         run: cat ./data/globals-dump.txt
