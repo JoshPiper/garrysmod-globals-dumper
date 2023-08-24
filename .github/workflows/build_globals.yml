@@ -16,6 +16,6 @@ jobs:
       - name: Prepare Environment
         run: mkdir ./data
       - name: Build Dump File
-        run: docker run --name=globals-server-test --mount type=bind,source=./data,target=/home/steam/garrysmod/garrysmod/data globals-server
+        run: docker run globals-server > dump.txt
       - name: Cat File
-        run: cat ./data/globals-dump.txt
+        run: cat dump.txt
