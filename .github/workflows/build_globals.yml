@@ -13,8 +13,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build Server Image
         run: docker build -t globals-server -f docker/server/Dockerfile .
-      - name: Prepare Environment
-        run: mkdir ./data
       - name: Build Dump File
         run: docker run globals-server > dump.txt
       - name: Parse Dump File
