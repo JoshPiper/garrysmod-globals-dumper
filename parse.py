@@ -1,6 +1,6 @@
 from pathlib import Path
 
-path = Path(r"C:\Users\joshu\Downloads\dump.txt")
+path = Path(r"./dump.txt")
 out = set()
 
 with path.open("r", encoding="utf8") as file:

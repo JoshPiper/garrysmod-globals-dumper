@@ -17,5 +17,5 @@ jobs:
         run: mkdir ./data
       - name: Build Dump File
         run: docker run globals-server > dump.txt
-      - name: Cat File
-        run: cat dump.txt
+      - name: Parse Dump File
+        run: sudo apt-get install -y python3 && python3 parse.py
